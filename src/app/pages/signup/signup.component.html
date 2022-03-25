@@ -1,5 +1,5 @@
 <section
-  class="grid h-screen bg-gradient-to-tr from-[#f64f59] via-[#c471ed] to-[#12c2e9]"
+  class="grid min-h-screen bg-gradient-to-tr from-[#f64f59] via-[#c471ed] to-[#12c2e9]"
 >
   <div
     class="bg-white shadow-lg self-center p-10 border border-gray-200 rounded-md mx-auto w-[40%]"
@@ -54,7 +54,7 @@
             <span>Please enter an email address.</span>
           </mat-error>
           <mat-error *ngIf="email?.hasError('pattern')">
-            Recheck your email address
+            Please enter a valid email address.
           </mat-error>
         </mat-form-field>
         <mat-form-field class="w-full mb-14">
@@ -69,9 +69,11 @@
           <mat-error *ngIf="password?.hasError('required')">
             <span>Please enter a password.</span>
           </mat-error>
-          <mat-hint class="relative">
-            Use 8 or more characters with a mix of uppercase and lowercase
-            letters, and atleast one number or symbol
+          <mat-error *ngIf="password?.hasError('minlength')">
+            <span>Please enter atleat 8 characters.</span>
+          </mat-error>
+          <mat-hint>
+            Salient Recommends a mix of letters, numbers, and or symbols
           </mat-hint>
         </mat-form-field>
         <mat-form-field class="w-full mb-14">

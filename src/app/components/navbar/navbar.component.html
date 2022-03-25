@@ -1,6 +1,24 @@
 <nav class="border-b border-gray-200 py-4">
-  <div class="limiter w-11/12 mx-auto">
-    <div class="flex font-['Pacifico'] text-2xl">Salient</div>
-    <div class="flex"></div>
+  <div class="limiter flex justify-between w-11/12 mx-auto">
+    <div class="inline-flex w-full font-['Pacifico'] text-2xl text-blue-600">
+      Salient
+    </div>
+    <div class="inline-flex w-full justify-end flex-row">
+      <a
+        href="/signup"
+        style="margin-left: 0.75rem; margin-right: 0.75rem"
+        mat-stroked-button
+      >
+        Create Account
+      </a>
+      <a
+        href="/login"
+        style="margin-left: 0.75rem; margin-right: 0.75rem"
+        mat-flat-button
+        color="primary"
+      >
+        Login
+      </a>
+    </div>
   </div>
 </nav>
