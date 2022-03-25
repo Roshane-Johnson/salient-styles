@@ -20,13 +20,17 @@ export class SignupComponent implements OnInit {
     firstName: new FormControl('', []),
     lastName: new FormControl('', []),
     username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8),
+      Validators.maxLength(20),
+    ]),
     confirmPassword: new FormControl('', [Validators.required]),
   });
 
   createUser(form: FormGroup): void {
-    if (form.invalid) return;
-    console.log(form.value);
+    // if (form.invalid) return;
+    console.log(form);
   }
 
   get firstName() {
