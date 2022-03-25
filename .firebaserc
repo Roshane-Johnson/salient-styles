@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "salient-styles": {
+      "hosting": {
+        "salient": [
+          "salient-styles"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "salient-styles"
+  }
+}

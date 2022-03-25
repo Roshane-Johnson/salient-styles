@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gradient-lovers": {
+    "salient": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gradient-lovers",
+            "outputPath": "dist/salient",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "gradient-lovers:build:production"
+              "browserTarget": "salient:build:production"
             },
             "development": {
-              "browserTarget": "gradient-lovers:build:development"
+              "browserTarget": "salient:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "gradient-lovers:build"
+            "browserTarget": "salient:build"
           }
         },
         "test": {
@@ -103,9 +103,19 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "salient:build:production",
+            "firebaseProject": "salient-styles",
+            "firebaseHostingSite": "salient-styles"
+          }
         }
       }
     }
   },
-  "defaultProject": "gradient-lovers"
+  "defaultProject": "salient"
 }
