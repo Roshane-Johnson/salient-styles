@@ -11,6 +11,12 @@ import { MaterialModule } from './modules/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from './guards/auth.guard';
+import { BearerTokenInterceptor } from './interceptors/bearer-token.interceptor';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
+import { GradientCardComponent } from './components/gradient-card/gradient-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +26,9 @@ import { SignupComponent } from './pages/signup/signup.component';
     LoginComponent,
     HomeComponent,
     SignupComponent,
+    ProfileComponent,
+    ProfileCardComponent,
+    GradientCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,8 +37,16 @@ import { SignupComponent } from './pages/signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BearerTokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Utilities } from 'src/app/helpers';
+import { AuthService } from 'src/app/services/auth.service';
+import { RegisterResponse } from 'src/app/types/RegisterResponse';
 
 @Component({
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  constructor() {}
+  constructor(private _auth: AuthService, private router: Router) {}
 
   validate = new Utilities();
+
+  fetchCompleted: boolean | null = null;
+  signupSuccessfull: boolean | null = null;
 
   signUpForm: FormGroup = new FormGroup({
     email: new FormControl('', [
@@ -29,8 +35,36 @@ export class SignupComponent implements OnInit {
   });
 
   createUser(form: FormGroup): void {
-    // if (form.invalid) return;
-    console.log(form);
+    if (form.invalid) return;
+    this.fetchCompleted = false;
+
+    let signupCredentials = new FormData();
+    signupCredentials.append('first_name', form.value.firstName);
+    signupCredentials.append('last_name', form.value.lastName);
+    signupCredentials.append('username', form.value.username);
+    signupCredentials.append('email', form.value.email);
+    signupCredentials.append('password', form.value.password);
+    signupCredentials.append(
+      'password_confirmation',
+      form.value.confirmPassword
+    );
+    this._auth
+      .registerUser(signupCredentials)
+      .subscribe((resp: RegisterResponse) => {
+        console.log(resp);
+        if ('bearer_token' in resp.data) {
+          this.fetchCompleted = true;
+          this.signupSuccessfull = true;
+
+          localStorage.setItem('token', resp.data.bearer_token);
+
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 2 * 1000);
+        } else {
+          this.signupSuccessfull = false;
+        }
+      });
   }
 
   get firstName() {

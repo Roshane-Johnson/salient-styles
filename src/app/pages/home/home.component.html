@@ -1,1 +1,8 @@
-<app-navbar></app-navbar>
+<main>
+  <div class="wrapper mx-auto w-10/12 mt-14 grid grid-cols-4 gap-4">
+    <app-gradient-card
+      *ngFor="let gradient of gradients"
+      [gradient]="gradient.colors"
+    ></app-gradient-card>
+  </div>
+</main>

@@ -1,3 +1,4 @@
+<!-- TODO: Add hide and show button for password field -->
 <section
   class="grid min-h-screen bg-gradient-to-tr from-[#f64f59] via-[#c471ed] to-[#12c2e9]"
 >
@@ -95,7 +96,30 @@
           </a>
         </p>
       </div>
-      <button mat-flat-button color="primary">Create Account</button>
+      <button mat-flat-button color="primary" class="flex items-center">
+        <svg
+          *ngIf="fetchCompleted == false"
+          class="animate-spin inline-block -ml-1 mr-3 h-5 w-5 text-gray-700"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+        <span>Create Account</span>
+      </button>
       <mat-divider style="margin-bottom: 1rem; margin-top: 1rem"></mat-divider>
       <a href="/login" mat-stroked-button color="primary">Login</a>
       <!-- TODO: Add Google OAuth to login -->
