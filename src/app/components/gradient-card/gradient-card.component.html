@@ -1,0 +1,18 @@
+<div class="bg-white rounded p-4 w-fit">
+  <div class="w-[270px] h-40 rounded-md text-transparent" #gradient_card></div>
+  <div class="flex mt-6 justify-between items-center">
+    <h2 class="font-semibold text-md">Options</h2>
+    <mat-icon [matMenuTriggerFor]="moreOptions">more_horiz</mat-icon>
+    <mat-menu #moreOptions="matMenu">
+      <div>
+        <button class="px-4 py-2" (click)="copyColor(0)">Color 1</button>
+      </div>
+      <div>Copy Gradient</div>
+    </mat-menu>
+  </div>
+</div>
+<!-- TODO: Add gradient name to migration and make it unique -->
+<!-- TODO: Style the "more options" mat-menu on this page -->
+<!-- TODO: Get some High quality gradients -->
+<!-- TODO: Enchance admin and site features -->
+<!-- TODO: Add create account and login button on navbar home page when logged out -->
