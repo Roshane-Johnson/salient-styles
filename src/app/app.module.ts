@@ -17,6 +17,8 @@ import { BearerTokenInterceptor } from './interceptors/bearer-token.interceptor'
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileCardComponent } from './components/profile/profile-card/profile-card.component';
 import { GradientCardComponent } from './components/gradient-card/gradient-card.component';
+import { ErrorNotFoundComponent } from './pages/error-not-found/error-not-found.component';
+import { TitlecasePipe } from './pipes/titlecase.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { GradientCardComponent } from './components/gradient-card/gradient-card.
     ProfileComponent,
     ProfileCardComponent,
     GradientCardComponent,
+    ErrorNotFoundComponent,
+    TitlecasePipe,
   ],
   imports: [
     BrowserModule,

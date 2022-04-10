@@ -11,7 +11,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$gradient-lovers-primary: mat.define-palette(mat.$indigo-palette);
+$gradient-lovers-primary: mat.define-palette(mat.$blue-palette);
 $gradient-lovers-accent: mat.define-palette(
   mat.$pink-palette,
   A200,
@@ -50,7 +50,6 @@ $gradient-lovers-theme: mat.define-light-theme(
 html,
 body {
   height: 100%;
-  background-color: #f0f0f0;
 }
 body {
   margin: 0;

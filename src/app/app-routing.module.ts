@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { ErrorNotFoundComponent } from './pages/error-not-found/error-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -19,8 +20,12 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
   },
-  // { path: 'profile/edit', component:ProfileCardComponent  },
-  { path: '**', redirectTo: '' },
+  {
+    path: 'profile/:username',
+    component: ProfileComponent,
+  },
+  { path: 'not-found', component: ErrorNotFoundComponent },
+  { path: '**', redirectTo: 'not-found' },
 ];
 
 @NgModule({
