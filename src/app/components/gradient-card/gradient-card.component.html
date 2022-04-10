@@ -4,7 +4,7 @@
 
 <article class="relative">
   <button
-    *ngIf="!gradient.is_favorite"
+    *ngIf="isLoggedIn && !gradient.is_favorite"
     aria-label="Save gradient to favourites"
     class="p-2.5 rounded-full transition-colors bg-gray-800 absolute top-4 right-4 text-white hover:bg-blue-500"
   >

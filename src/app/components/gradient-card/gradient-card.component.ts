@@ -31,6 +31,7 @@ export class GradientCardComponent implements OnInit {
 
   gradientColors: string[] = [];
   isLoggedIn = this.authService.loggedIn();
+  gradientDirection: string = 'to right';
 
   ngOnInit(): void {}
 
@@ -40,7 +41,7 @@ export class GradientCardComponent implements OnInit {
    */
   ngAfterViewInit(): void {
     this.gradientElement.forEach((element: ElementRef) => {
-      element.nativeElement.style.background = `linear-gradient(to right, ${this.gradient.colors}) no-repeat`;
+      element.nativeElement.style.background = `linear-gradient(${this.gradientDirection}, ${this.gradient.colors}) no-repeat`;
 
       let gradientBackground = element.nativeElement.style.background;
 
