@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfoService } from 'src/app/services/user-info.service';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { ApiResponse } from 'src/app/types/ApiResponse';
+import { User } from 'src/app/types/User';
 
 @Component({
   selector: 'app-profile-card',
@@ -8,14 +10,21 @@ import { ApiResponse } from 'src/app/types/ApiResponse';
   styleUrls: ['./profile-card.component.scss'],
 })
 export class ProfileCardComponent implements OnInit {
-  constructor(private userInfoService: UserInfoService) {
-    this.userInfoService.getAuthUserInfo().subscribe({
-      next: (resp: ApiResponse) => (this.currentUser = resp.data),
+  currentUser?: User;
+  username: string | null = '';
+  gradientCount: number | undefined = 0;
+
+  constructor(private auth: AuthService, private route: ActivatedRoute) {
+    this.auth.loggedInUser().subscribe({
+      next: (resp: ApiResponse) => {
+        this.currentUser = resp.data;
+        this.gradientCount = this.currentUser?.gradients.length;
+      },
       error: (err: any) => console.log(err),
     });
   }
 
-  currentUser: any = '';
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username = this.route.snapshot.paramMap.get('username');
+  }
 }

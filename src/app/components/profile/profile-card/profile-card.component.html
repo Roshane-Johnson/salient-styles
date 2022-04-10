@@ -1,51 +1,82 @@
-<section class="h-screen">
-  <div class="bg-red-400 flex items-center justify-center h-[50vh]">
-    <div
-      class="rounded-md flex flex-col items-center justify-center bg-white w-1/2 pt-20 pb-12 relative"
-    >
-      <div class="w-40 h-40 absolute -top-20">
-        <img
-          [src]="
-            currentUser.profile_pic ??
-            'assets/images/profile/default_profile_pic.jpg'
-          "
-          class="w-full h-full object-cover rounded-full border-8 border-white"
-        />
-      </div>
-      <div
-        *ngIf="!currentUser"
-        class="flex justify-center flex-col items-center mt-5"
-      >
-        <svg
-          class="animate-spin h-8 w-8 text-red-500"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            class="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            stroke-width="4"
-          ></circle>
-          <path
-            class="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-          ></path>
-        </svg>
-      </div>
-      <div
-        *ngIf="currentUser"
-        class="flex justify-center flex-col items-center mt-5"
-      >
-        <h2>
-          {{ currentUser.username ?? "username" }}
-        </h2>
-        <p>{{ currentUser.email ?? "username@mail.com" }}</p>
-      </div>
+<section class="flex flex-col items-center justify-center mt-24">
+  <div class="rounded-md grid grid-cols-[2fr_8fr] gap-x-9 bg-white w-1/2">
+    <div class="w-40 h-40">
+      <img
+        [src]="
+          currentUser?.profile_pic ??
+          'assets/images/profile/default_profile_pic.jpg'
+        "
+        class="w-full h-full object-cover rounded-full border-8 border-white"
+      />
     </div>
+    <div
+      *ngIf="!currentUser"
+      class="loading-animation flex justify-center flex-col items-center mt-5"
+    >
+      <svg
+        class="animate-spin h-8 w-8 text-red-500"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"
+        ></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        ></path>
+      </svg>
+    </div>
+    <div *ngIf="currentUser" class="flex flex-col py-4">
+      <h2 class="text-[28px] mb-3 font-[400]">
+        {{ currentUser?.username ?? "username" | lowercase }}
+      </h2>
+      <ul class="flex flex-row mb-4">
+        <li class="mr-8">
+          <span class="font-bold">{{
+            this.gradientCount ?? this.gradientCount
+          }}</span>
+          gradients
+        </li>
+        <li class="mr-8"><span class="font-bold">0</span> followers</li>
+        <li class=""><span class="font-bold">0</span> following</li>
+      </ul>
+      <h2 class="font-[500] mb-2">Roshane Johnson</h2>
+      <h2 class="font-[500] mb-2">
+        {{
+          currentUser.first_name &&
+            (currentUser.last_name ??
+              currentUser.first_name + " " + currentUser.last_name) | titlecase
+        }}
+      </h2>
+      <pre class="font-sans">{{ currentUser?.bio ?? currentUser.bio }}</pre>
+      <!-- <pre class="font-sans">
+🔌 I deal memes daily, trust am the goat
+📭 You can message me about anything
+💙 Follow this page if you’re cool ( @shydrip )
+👇 Click the link below 🔥
+</pre
+      > -->
+    </div>
+  </div>
+  <div class="w-1/2 mx-auto mt-4">
+    <mat-tab-group>
+      <mat-tab label="Gradients">
+        <div class="grid grid-cols-2 gap-x-5 pt-5 overflow-y-visible">
+          <app-gradient-card
+            *ngFor="let gradient of currentUser?.gradients"
+            [gradient]="gradient"
+          ></app-gradient-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="Favourites"></mat-tab>
+    </mat-tab-group>
   </div>
 </section>
