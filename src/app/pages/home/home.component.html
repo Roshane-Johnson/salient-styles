@@ -1,8 +1,39 @@
 <main>
-  <div class="wrapper mx-auto w-10/12 mt-14 grid grid-cols-4 gap-4">
+  <div
+    class="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8 sm:py-24 lg:py-44 grid grid-cols-[5fr_4fr] gap-x-8"
+  >
+    <div class="text-left">
+      <div class="flex flex-col max-w-3xl">
+        <h1
+          class="mt-1 text-4xl font-sans font-black text-transparent uppercase tracking-tighest sm:text-5xl lg:text-6xl bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text"
+        >
+          The super fast gradients generator!
+        </h1>
+      </div>
+      <p class="mt-8 text-xl text-gray-700">
+        A curated collection of beautiful CSS gradients. Easily copy and paste
+        the css code or save the individual colors of the gradients.
+      </p>
+      <button
+        (click)="scrollToElement('.wrapper')"
+        class="mt-6 py-2 px-4 rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors"
+      >
+        Explore Gradients
+      </button>
+    </div>
+    <div class="w-10/12 self-center justify-self-end">
+      <img
+        src="/assets/images/undraw_add_color_re_buro.svg"
+        alt="hero section illustration"
+      />
+    </div>
+  </div>
+  <div
+    class="wrapper mx-auto grid max-w-screen-xl grid-cols-1 gap-8 px-4 sm:px-6 lg:px-8 pb-32 sm:grid-cols-2 lg:grid-cols-3"
+  >
     <app-gradient-card
       *ngFor="let gradient of gradients"
-      [gradient]="gradient.colors"
+      [gradient]="gradient"
     ></app-gradient-card>
   </div>
 </main>
