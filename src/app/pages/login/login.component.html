@@ -4,8 +4,13 @@
   <div
     class="text-white flex justify-center items-center flex-col w-1/2 mx-auto text-center"
   >
-    <h1 class="font-['Pacifico'] text-7xl mb-8">Salient</h1>
-    <p>
+    <h1
+      class="font-['Pacifico'] text-7xl mb-8 cursor-pointer select-none"
+      routerLink="/"
+    >
+      Salient
+    </h1>
+    <p routerLink="/" class="cursor-pointer select-none">
       A handpicked collection of beautiful color gradients for designers and
       developers.
     </p>
@@ -13,12 +18,20 @@
   <div
     class="bg-white shadow-lg self-center p-10 border border-gray-200 rounded-md mx-auto w-1/2"
   >
-    <!-- <p class="p-4 mb-8 rounded-md bg-red-200 text-red-700">
-      Invalid Credentials, Try again
+    <p
+      *ngIf="loginSuccessfull == false"
+      class="p-4 mb-8 rounded-md bg-red-200 text-red-700 flex justify-between items-center"
+    >
+      <span>Invalid Credentials, Try again</span>
+      <mat-icon>cancel</mat-icon>
     </p>
-    <p class="p-4 mb-8 rounded-md bg-green-200 text-green-700">
-      Logged in successfully
-    </p> -->
+    <p
+      *ngIf="loginSuccessfull"
+      class="p-4 mb-8 rounded-md bg-green-200 text-green-700 flex justify-between items-center"
+    >
+      <span>Logged in successfully...</span>
+      <mat-icon>check_circle</mat-icon>
+    </p>
     <h1 class="font-bold text-lg mb-2 text-center">Sign in</h1>
     <p class="mb-8 text-center">using your Gradient Lovers account</p>
     <form

@@ -1,0 +1,23 @@
+<div
+  class="flex justify-center items-center flex-col h-screen bg-white text-center"
+>
+  <h1 class="font-['Pacifico'] text-blue-600 text-3xl mb-10 select-none">
+    Salient
+  </h1>
+  <h3 class="text-blue-500 font-medium mb-3.5">
+    {{ "404 ERROR" | uppercase }}
+  </h3>
+  <h2 class="font-sans font-black text-3xl lg:text-5xl text-gray-800 mb-4">
+    {{ "Page Not Found." | uppercase }}
+  </h2>
+  <p class="text-gray-500 mb-14">
+    Sorry we can't find the page you're looking for.
+  </p>
+  <a
+    href="/"
+    class="flex bg-blue-500 text-sm items-center lg:text-base text-white px-6 py-2 lg:px-8 lg:py-3 rounded-md font-medium"
+  >
+    {{ "Go back home" | uppercase }}
+    <mat-icon [ngStyle]="{ marginLeft: '10px' }">east</mat-icon></a
+  >
+</div>
