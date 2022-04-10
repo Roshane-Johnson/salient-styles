@@ -1,4 +1,4 @@
-<nav class="bg-white border-b border-gray-200 py-4">
+<nav class="bg-white border-b border-gray-200 py-4 fixed w-full z-[1] top-0">
   <div class="limiter flex justify-between w-11/12 mx-auto">
     <a
       href="/"
@@ -6,7 +6,20 @@
     >
       Salient
     </a>
-    <div class="inline-flex w-full justify-end flex-row">
+    <div *ngIf="!loggedIn" class="inline-flex w-full justify-end flex-row">
+      <button
+        mat-stroked-button
+        matButton
+        routerLink="/login"
+        style="margin-right: 0.75rem"
+      >
+        Login
+      </button>
+      <button mat-flat-button matButton routerLink="/signup" color="primary">
+        Create Account
+      </button>
+    </div>
+    <div *ngIf="loggedIn" class="inline-flex w-full justify-end flex-row">
       <div
         class="flex flex-row justify-center items-center"
         [matMenuTriggerFor]="beforeMenu"

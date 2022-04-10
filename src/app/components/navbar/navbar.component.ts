@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserInfoService } from 'src/app/services/user-info.service';
 import { ApiResponse } from 'src/app/types/ApiResponse';
 import { environment } from 'src/environments/environment';
 
@@ -10,14 +9,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(
-    private _auth: AuthService,
-    private userInfoService: UserInfoService
-  ) {}
+  constructor(private _auth: AuthService) {}
 
   currentUser: any = '';
 
-  isLoggedIn: boolean = this._auth.loggedIn();
+  loggedIn: boolean = this._auth.loggedIn();
 
   logoutUser() {
     this._auth.logoutUser().subscribe((resp: ApiResponse) => {
@@ -31,8 +27,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     if (this._auth.loggedIn()) {
-      this.userInfoService
-        .getAuthUserInfo()
+      this._auth
+        .loggedInUser()
         .subscribe((resp: ApiResponse) => (this.currentUser = resp.data));
     }
   }
