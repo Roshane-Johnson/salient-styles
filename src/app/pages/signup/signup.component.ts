@@ -12,6 +12,7 @@ import { RegisterResponse } from 'src/app/types/RegisterResponse';
 export class SignupComponent implements OnInit {
   constructor(private _auth: AuthService, private router: Router) {}
 
+  passwordVisible: boolean = false;
   validate = new Utilities();
 
   fetchCompleted: boolean | null = null;
