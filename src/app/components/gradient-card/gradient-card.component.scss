@@ -1,0 +1,11 @@
+.codeSnippet {
+  scrollbar-width: none;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.mat-tooltip {
+  @apply bg-gray-800;
+}
