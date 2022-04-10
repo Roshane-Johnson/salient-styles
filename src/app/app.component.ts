@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   showNavbar: boolean = false;
 
   /** Ensure that the disallowed routes doesn't have a starting slash "/" */
-  disallowNavbarRoutes: string[] = ['login', 'signup'];
+  disallowNavbarRoutes: string[] = ['login', 'signup', 'not-found'];
 
   ngOnInit(): void {}
 
