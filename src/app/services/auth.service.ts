@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiResponse } from '../types/ApiResponse';
 import { LoginResponse } from '../types/LoginResponse';
@@ -39,5 +39,22 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  /**
+   * This function returns the logged in user
+   * @returns An `User` with the logged in user
+   */
+  loggedInUser() {
+    return this.http.get<ApiResponse>(`${environment.apiUrl}/profile`);
+  }
+
+  /**
+   * This function returns the logged in user type
+   * check if the a user is logged in first via `AuthService.loggedIn()` before usage
+   * @returns A `string` with the logged in user type
+   */
+  loggedInUserType() {
+    return this.http.get<ApiResponse>(`${environment.apiUrl}/profile`);
   }
 }
