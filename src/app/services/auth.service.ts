@@ -1,7 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserType } from '../enums/user-type';
 import { ApiResponse } from '../types/ApiResponse';
 import { LoginResponse } from '../types/LoginResponse';
 import { RegisterResponse } from '../types/RegisterResponse';
@@ -50,11 +52,15 @@ export class AuthService {
   }
 
   /**
-   * This function returns the logged in user type
-   * check if the a user is logged in first via `AuthService.loggedIn()` before usage
-   * @returns A `string` with the logged in user type
+   * This function returns `true` if the logged in user role is `admin`
+   * and `false` is the logged in user role is not an admin
+   * @returns A `boolean` if the logged in user is an admin
    */
-  loggedInUserType() {
-    return this.http.get<ApiResponse>(`${environment.apiUrl}/profile`);
+  loggedInUserIsAdmin(activatedRoute: ActivatedRoute): boolean {
+    if (activatedRoute.snapshot.data['resp'].data.role == UserType.ADMIN) {
+      return true;
+    }
+
+    return false;
   }
 }

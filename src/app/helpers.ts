@@ -45,4 +45,19 @@ export class Utilities {
       console.log('Prod Mode', 'An unknown error occured');
     }
   }
+
+  /**
+   * Scroll to the first element that is a descendant of node that matches selectors or returns false if not found
+   * @param selector CSS selector for desired element
+   */
+  public static scrollToElement(selector: string): void | false {
+    const element = document.querySelector(selector);
+    const elementExists = !!element;
+
+    if (elementExists) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    return false;
+  }
 }

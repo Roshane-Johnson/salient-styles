@@ -10,6 +10,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -25,6 +28,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTabsModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatSelectModule,
   ],
 })
 export class MaterialModule {}
