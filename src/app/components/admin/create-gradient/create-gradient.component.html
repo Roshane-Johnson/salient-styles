@@ -1,0 +1,114 @@
+<div class="container grid px-6 mx-auto">
+  <h1 class="my-6 text-2xl font-semibold text-gray-700">Create Gradient</h1>
+  <div class="grid gap-6 mb-8 md:grid-cols-2">
+    <div class="min-w-0 rounded-lg shadow-sm overflow-hidden bg-white p-10">
+      <form [formGroup]="createGradientForm">
+        <div class="grid grid-cols-2 place-items-stretch gap-x-6">
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label>Name</mat-label>
+            <input
+              type="text"
+              matInput
+              placeholder="Name"
+              formControlName="name"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" color="primary">
+            <mat-label>Direction</mat-label>
+            <mat-select matNativeControl formControlName="direction">
+              <mat-option [value]="'to left'">
+                <mat-icon>east</mat-icon>
+                Left to Right
+              </mat-option>
+              <mat-option [value]="'to right'">
+                <mat-icon>west</mat-icon>
+                Right to Left
+              </mat-option>
+              <mat-option [value]="'to bottom'">
+                <mat-icon>south</mat-icon>
+                Top to Bottom
+              </mat-option>
+              <mat-option [value]="'to top'">
+                <mat-icon>north</mat-icon>
+                Bottom to Top
+              </mat-option>
+              <mat-option [value]="'to right top'">
+                <mat-icon>north_west</mat-icon>
+                From Bottom to Right Top
+              </mat-option>
+              <mat-option [value]="'to left top'">
+                <mat-icon>north_east</mat-icon>
+                From Bottom to Left Top
+              </mat-option>
+              <mat-option [value]="'to right bottom'">
+                <mat-icon>south_east</mat-icon>
+                From Top to Right Bottom
+              </mat-option>
+              <mat-option [value]="'to left bottom'">
+                <mat-icon>south_west</mat-icon>
+                From Top to Left Bottom
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="mb-8">
+            <input
+              class="h-[40px] w-full pl-6 rounded-md border border-gray-400"
+              formControlName="color1"
+              [(colorPicker)]="colorPicker1"
+              [style.background]="colorPicker1"
+              [value]="colorPicker1"
+              (colorPickerChange)="_updateColor($event, 1)"
+            />
+          </div>
+          <div class="mb-8">
+            <input
+              class="h-[40px] w-full pl-6 rounded-md border border-gray-400"
+              formControlName="color2"
+              [(colorPicker)]="colorPicker2"
+              [style.background]="colorPicker2"
+              [value]="colorPicker2"
+              (colorPickerChange)="_updateColor($event, 2)"
+            />
+          </div>
+          <div class="col-span-2 grid place-content-stretch h-[60px] mb-8">
+            <input
+              class="pl-6 rounded-md border border-gray-400"
+              formControlName="color3"
+              [(colorPicker)]="colorPicker3"
+              [style.background]="colorPicker3"
+              [value]="colorPicker3"
+              (colorPickerChange)="_updateColor($event, 3)"
+            />
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button
+            class="cursor-pointer leading-5 transition-colors duration-150 font-medium focus:outline-none px-4 py-3 rounded-lg text-sm text-white bg-blue-500 active:bg-blue-500 hover:bg-blue-600 focus:shadow-outline-purple"
+            tabindex="0"
+            (click)="createGradient(createGradientForm)"
+          >
+            Create<span aria-hidden="true" class="ml-2">+</span>
+          </button>
+        </div>
+        <div
+          *ngIf="errorRespMessage"
+          class="border-2 border-red-600 text-red-600 bg-red-300 px-4 py-3 mt-4 rounded-md"
+        >
+          {{ errorRespMessage }}
+        </div>
+        <div
+          *ngIf="successRespMessage"
+          class="border-2 border-green-600 text-green-600 bg-green-300 px-4 py-3 mt-4 rounded-md"
+        >
+          {{ successRespMessage }}
+        </div>
+      </form>
+    </div>
+    <div class="min-w-0 rounded-lg shadow-sm overflow-hidden bg-white p-6">
+      <div
+        class="w-full h-full rounded-[1rem] shadow-sm"
+        id="gradientAdminPreview"
+      ></div>
+    </div>
+  </div>
+</div>

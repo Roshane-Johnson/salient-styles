@@ -1,7 +1,6 @@
 <!-- TODO: Get some High quality gradients -->
 <!-- TODO: Enchance admin and site features -->
 <!-- TODO: Add loading for gradients before they popin -->
-
 <article class="relative">
   <button
     *ngIf="isLoggedIn && !gradient.is_favorite"
@@ -70,6 +69,170 @@
             </mat-menu>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="flow-root mt-6">
+      <div class="flex flex-wrap justify-center -m-0.5">
+        <span class="p-0.5">
+          <button
+            aria-label="Change gradient direction to top"
+            (click)="changeDirection($event, 'to top')"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
+        <span class="p-0.5">
+          <button
+            (click)="changeDirection($event, 'to bottom')"
+            aria-label="Change gradient direction to bottom"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 rotate-180"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
+        <span class="p-0.5"
+          ><button
+            (click)="changeDirection($event, 'to left')"
+            aria-label="Change gradient direction to left"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 -rotate-90"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
+        <span class="p-0.5">
+          <button
+            (click)="changeDirection($event, 'to right')"
+            aria-label="Change gradient direction to right"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 rotate-90"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
+        <span class="p-0.5">
+          <button
+            (click)="changeDirection($event, 'to top left')"
+            aria-label="Change gradient direction to top-left"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 -rotate-45"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
+        <span class="p-0.5">
+          <button
+            (click)="changeDirection($event, 'to top right')"
+            aria-label="Change gradient direction to top-right"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 rotate-45"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
+        <span class="p-0.5">
+          <button
+            (click)="changeDirection($event, 'to bottom left')"
+            aria-label="Change gradient direction to bottom-left"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 -rotate-135"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
+        <span class="p-0.5">
+          <button
+            (click)="changeDirection($event, 'to bottom right')"
+            aria-label="Change gradient direction to bottom-right"
+            class="p-1.5 rounded-lg bg-white text-gray-700 border-2 border-gray-200 hover:text-white hover:bg-gray-700 hover:border-2 hover:border-transparent transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              class="w-5 h-5 rotate-135"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+        </span>
       </div>
     </div>
   </div>

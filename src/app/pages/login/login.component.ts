@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Utilities } from 'src/app/helpers';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoginResponse } from 'src/app/types/LoginResponse';
@@ -10,8 +10,12 @@ import { LoginResponse } from 'src/app/types/LoginResponse';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private _auth: AuthService, private router: Router) {}
-
+  constructor(
+    private _auth: AuthService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
+  isAdmin: boolean = false;
   validate = new Utilities();
 
   fetchCompleted: boolean | null = null;

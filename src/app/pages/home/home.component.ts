@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private auth: AuthService) {}
   gradients: Gradient[] = [];
   loggedInUserRole: string = '';
+  scrollToGradeints(cssSelector: string): void {
+    Utilities.scrollToElement(cssSelector);
+  }
 
   ngOnInit(): void {
     this.http.get<ApiResponse>(`${environment.apiUrl}/gradient/all`).subscribe({
@@ -26,7 +29,7 @@ export class HomeComponent implements OnInit {
     });
 
     if (this.auth.loggedIn()) {
-      this.auth.loggedInUserType().subscribe({
+      this.auth.loggedInUser().subscribe({
         next: (resp: ApiResponse) => {
           this.loggedInUserRole = resp.data.role;
         },
@@ -37,20 +40,5 @@ export class HomeComponent implements OnInit {
     }
 
     // TODO Create check for logged in user then return that users role.
-  }
-
-  /**
-   * Scroll to the first element that is a descendant of node that matches selectors or returns false if not found
-   * @param selector CSS selector for desired element
-   */
-  scrollToElement(selector: string): void | false {
-    const element = document.querySelector(selector);
-    const elementExists = !!element;
-
-    if (elementExists) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    return false;
   }
 }
