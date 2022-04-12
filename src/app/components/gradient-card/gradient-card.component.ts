@@ -32,68 +32,8 @@ export class GradientCardComponent implements OnInit {
 
   gradientColors: string[] = [];
   isLoggedIn = this.authService.loggedIn();
-  // convertedVals: any[] = [];
 
-  ngOnInit(): void {
-    // let rgbValues = [
-    //   'linear-gradient(to right, rgb(236, 72, 153), rgb(239, 68, 68), rgb(234, 179, 8))',
-    //   'linear-gradient(to right, rgb(134, 239, 172), rgb(59, 130, 246), rgb(147, 51, 234))',
-    //   'linear-gradient(to right, rgb(249, 168, 212), rgb(216, 180, 254), rgb(129, 140, 248))',
-    //   'linear-gradient(to right, rgb(55, 65, 81), rgb(17, 24, 39), rgb(0, 0, 0))',
-    //   'linear-gradient(to right, rgb(199, 210, 254), rgb(254, 202, 202), rgb(254, 249, 195))',
-    //   'linear-gradient(to right, rgb(254, 249, 195), rgb(253, 224, 71), rgb(234, 179, 8))',
-    //   'linear-gradient(to right, rgb(254, 240, 138), rgb(187, 247, 208), rgb(34, 197, 94))',
-    //   'linear-gradient(to right, rgb(229, 231, 235), rgb(156, 163, 175), rgb(75, 85, 99))',
-    //   'linear-gradient(to right, rgb(254, 202, 202), rgb(252, 165, 165), rgb(254, 240, 138))',
-    //   'linear-gradient(to right, rgb(187, 247, 208), rgb(134, 239, 172), rgb(59, 130, 246))',
-    //   'linear-gradient(to right, rgb(254, 240, 138), rgb(250, 204, 21), rgb(161, 98, 7))',
-    //   'linear-gradient(to right, rgb(187, 247, 208), rgb(74, 222, 128), rgb(126, 34, 206))',
-    //   'linear-gradient(to right, rgb(254, 202, 202), rgb(220, 38, 38))',
-    //   'linear-gradient(to right, rgb(134, 239, 172), rgb(253, 224, 71), rgb(249, 168, 212))',
-    //   'linear-gradient(to right, rgb(165, 180, 252), rgb(192, 132, 252))',
-    //   'linear-gradient(to right, rgb(187, 247, 208), rgb(34, 197, 94))',
-    //   'linear-gradient(to right, rgb(233, 213, 255), rgb(192, 132, 252), rgb(107, 33, 168))',
-    //   'linear-gradient(to right, rgb(156, 163, 175), rgb(75, 85, 99), rgb(30, 64, 175))',
-    //   'linear-gradient(to right, rgb(219, 234, 254), rgb(147, 197, 253), rgb(59, 130, 246))',
-    //   'linear-gradient(to right, rgb(187, 247, 208), rgb(74, 222, 128), rgb(34, 197, 94))',
-    //   'linear-gradient(to right, rgb(192, 132, 252), rgb(250, 204, 21))',
-    //   'linear-gradient(to right, rgb(248, 113, 113), rgb(209, 213, 219), rgb(59, 130, 246))',
-    //   'linear-gradient(to right, rgb(153, 27, 27), rgb(202, 138, 4), rgb(234, 179, 8))',
-    //   'linear-gradient(to right, rgb(254, 240, 138), rgb(234, 179, 8))',
-    //   'linear-gradient(to right, rgb(147, 197, 253), rgb(187, 247, 208), rgb(253, 224, 71))',
-    //   'linear-gradient(to right, rgb(254, 240, 138), rgb(187, 247, 208), rgb(134, 239, 172))',
-    //   'linear-gradient(to right, rgb(254, 240, 138), rgb(253, 224, 71), rgb(250, 204, 21))',
-    //   'linear-gradient(to right, rgb(29, 78, 216), rgb(30, 64, 175), rgb(17, 24, 39))',
-    //   'linear-gradient(to right, rgb(134, 239, 172), rgb(192, 132, 252))',
-    //   'linear-gradient(to right, rgb(254, 240, 138), rgb(251, 207, 232), rgb(244, 114, 182))',
-    //   'linear-gradient(to right, rgb(244, 114, 182), rgb(219, 39, 119))',
-    //   'linear-gradient(to right, rgb(202, 138, 4), rgb(220, 38, 38))',
-    //   'linear-gradient(to right, rgb(34, 197, 94), rgb(21, 128, 61))',
-    //   'linear-gradient(to right, rgb(239, 68, 68), rgb(34, 197, 94))',
-    //   'linear-gradient(to right, rgb(234, 88, 12), rgb(249, 115, 22))',
-    //   'linear-gradient(to right, rgb(101, 163, 13), rgb(253, 224, 71), rgb(220, 38, 38))',
-    //   'linear-gradient(to right, rgb(190, 18, 60), rgb(219, 39, 119))',
-    //   'linear-gradient(to right, rgb(251, 113, 133), rgb(217, 70, 239), rgb(99, 102, 241))',
-    //   'linear-gradient(to right, rgb(15, 23, 42), rgb(88, 28, 135), rgb(15, 23, 42))',
-    //   'linear-gradient(to right, rgb(56, 189, 248), rgb(251, 113, 133), rgb(163, 230, 53))',
-    //   'linear-gradient(to right, rgb(59, 130, 246), rgb(37, 99, 235))',
-    //   'linear-gradient(to right, rgb(255, 228, 230), rgb(204, 251, 241))',
-    //   'linear-gradient(rgb(56, 189, 248), rgb(186, 230, 253))',
-    //   'linear-gradient(rgb(249, 115, 22), rgb(253, 224, 71))',
-    //   'linear-gradient(to right, rgb(251, 113, 133), rgb(253, 186, 116))',
-    // ];
-    // rgbValues.forEach((value: string) => {
-    //   const matched = (
-    //     value.match(
-    //       /rgb\((\d{1,3}), (\d{1,3}), (\d{1,3})\)/
-    //     ) as RegExpMatchArray
-    //   ).concat('end');
-    //   this.convertedVals.push(
-    //     `${this.rgb2hex(matched[1], matched[2], matched[3])} `
-    //   );
-    // });
-    // Ended at gradient called 'Morninsg'
-  }
+  ngOnInit(): void {}
 
   changeDirection(event: any, direction: string) {
     const gradient = (
@@ -101,17 +41,12 @@ export class GradientCardComponent implements OnInit {
     ).parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.querySelector(
       '#gradient_element'
     ) as HTMLElement;
-
+    // TODO: Make better regex for detecting linear gradient direction the current one is not good
     gradient.style.background = gradient.style.background.replace(
       gradient.style.background.match(/to\w?[a-z\s]+/)?.toString() as string,
       direction
     );
   }
-
-  // rgb2hex = (r: any, g: any, b: any) => {
-  //   var rgb = (r << 16) | (g << 8) | b;
-  //   return '#' + rgb.toString(16).padStart(6, '0');
-  // };
 
   /**
    * A callback method that is invoked after the page view is initialized for the first time.
