@@ -35,9 +35,6 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    resolve: {
-      resp: ResolveResolver,
-    },
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'dashboard/create', component: CreateGradientComponent },
