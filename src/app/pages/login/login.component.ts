@@ -1,8 +1,9 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Utilities } from 'src/app/helpers';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedUtilsService } from 'src/app/services/shared-utils.service';
 import { LoginResponse } from 'src/app/types/LoginResponse';
 
 @Component({
@@ -11,12 +12,11 @@ import { LoginResponse } from 'src/app/types/LoginResponse';
 })
 export class LoginComponent implements OnInit {
   constructor(
-    private _auth: AuthService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private _auth: AuthService,
+    private _utils: SharedUtilsService
   ) {}
   isAdmin: boolean = false;
-  validate = new Utilities();
 
   fetchCompleted: boolean | null = null;
   loginSuccessfull: boolean | null = null;
@@ -48,19 +48,24 @@ export class LoginComponent implements OnInit {
     loginCredentials.append('email', form.value.email);
     loginCredentials.append('password', form.value.password);
 
-    this._auth.loginUser(loginCredentials).subscribe((resp: LoginResponse) => {
-      if ('bearer_token' in resp.data) {
-        this.fetchCompleted = true;
-        this.loginSuccessfull = true;
+    this._auth.loginUser(loginCredentials).subscribe({
+      next: (resp: LoginResponse) => {
+        if ('bearer_token' in resp.data) {
+          this.fetchCompleted = true;
+          this.loginSuccessfull = true;
 
-        localStorage.setItem('token', resp.data.bearer_token);
+          localStorage.setItem('token', resp.data.bearer_token);
 
-        setTimeout(() => {
-          this.router.navigate(['/']);
-        }, 2 * 1000);
-      } else {
-        this.loginSuccessfull = false;
-      }
+          setTimeout(() => {
+            this.router.navigate(['/']);
+          }, 2 * 1000);
+        } else {
+          this.loginSuccessfull = false;
+        }
+      },
+      error: (error: HttpErrorResponse) => {
+        this._utils.devlog(error.error);
+      },
     });
   }
 

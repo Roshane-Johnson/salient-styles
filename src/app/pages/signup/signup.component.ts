@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Utilities } from 'src/app/helpers';
 import { AuthService } from 'src/app/services/auth.service';
+import { SharedUtilsService } from 'src/app/services/shared-utils.service';
 import { RegisterResponse } from 'src/app/types/RegisterResponse';
 
 @Component({
@@ -10,10 +10,13 @@ import { RegisterResponse } from 'src/app/types/RegisterResponse';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private _auth: AuthService, private router: Router) {}
+  constructor(
+    private _auth: AuthService,
+    private router: Router,
+    private _util: SharedUtilsService
+  ) {}
 
   passwordVisible: boolean = false;
-  validate = new Utilities();
 
   fetchCompleted: boolean | null = null;
   signupSuccessfull: boolean | null = null;

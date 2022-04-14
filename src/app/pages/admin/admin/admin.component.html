@@ -1,5 +1,13 @@
-<mat-spinner *ngIf="isLoading" color="primary"> </mat-spinner>
-<div class="flex h-screen bg-gray-50 false">
+<div *ngIf="isLoading" class="grid place-items-center h-screen max-h-screen">
+  <div class="grid-center">
+    <h1 class="font-black text-lg md:text-3xl text-center text-gray-800 mb-8">
+      Authenticating
+    </h1>
+    <mat-spinner class="-scale-50 md:scale-100" color="primary"></mat-spinner>
+  </div>
+</div>
+
+<div *ngIf="!isLoading && isAdmin" class="flex h-screen bg-gray-50 false">
   <aside
     class="z-30 flex-shrink-0 hidden w-64 overflow-y-auto bg-white lg:block"
   >

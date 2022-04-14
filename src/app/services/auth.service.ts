@@ -1,18 +1,22 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserType } from '../enums/user-type';
 import { ApiResponse } from '../types/ApiResponse';
 import { LoginResponse } from '../types/LoginResponse';
 import { RegisterResponse } from '../types/RegisterResponse';
+import { User } from '../types/User';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
+
+  /** Logged in user cache to reduce API calls on app initialization */
+  public loggedInUserCache!: User;
 
   registerUser(signupCredentials: FormData): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(
@@ -43,10 +47,6 @@ export class AuthService {
     }
   }
 
-  /**
-   * This function returns the logged in user
-   * @returns An `User` with the logged in user
-   */
   loggedInUser() {
     return this.http.get<ApiResponse>(`${environment.apiUrl}/profile`);
   }
