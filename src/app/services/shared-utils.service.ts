@@ -1,6 +1,12 @@
+import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-export class Utilities {
+@Injectable({
+  providedIn: 'root',
+})
+export class SharedUtilsService {
+  constructor() {}
+
   /**
    * This function will check if the `text` parameter contains upper and lowercase
    * @param text String you would like to run the check for
@@ -38,7 +44,7 @@ export class Utilities {
    * the production mode is checked from the `environment.ts` file
    * @param message Item you would like to log to console
    */
-  public static devLog(message: any): void {
+  devlog(message: any): void {
     if (!environment.production) {
       console.log('Dev Mode:', message);
     } else {
@@ -50,7 +56,7 @@ export class Utilities {
    * Scroll to the first element that is a descendant of node that matches selectors or returns false if not found
    * @param selector CSS selector for desired element
    */
-  public static scrollToElement(selector: string): void | false {
+  scrollToElement(selector: string): void | false {
     const element = document.querySelector(selector);
     const elementExists = !!element;
 
