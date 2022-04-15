@@ -24,7 +24,7 @@ export class GradientCardComponent implements OnInit {
     id: 0,
     name: 'Hyper',
     colors: 'rgb(233, 213, 255), rgb(192, 132, 252), rgb(107, 33, 168)',
-    direction: 'to bottom from left',
+    direction: 'to right',
     is_favorite: false,
   };
 
@@ -35,17 +35,51 @@ export class GradientCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  changeDirection(event: any, direction: string) {
+  changeDirection(event: Event, direction: string) {
+    /**
+     * Regex for `linear-gradient()`
+     * that captures `linear-gradient(` and `linear-gradient(to right,` and other directions if available
+     */
+    const gradientDirectionRegex = /linear-gradient\((to[a-z\s]+,)?/;
+
+    // Getting the gradient element from the DOM
     const gradient = (
       event.target as HTMLElement
     ).parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.parentElement?.querySelector(
       '#gradient_element'
     ) as HTMLElement;
-    // TODO: Make better regex for detecting linear gradient direction the current one is not good
-    gradient.style.background = gradient.style.background.replace(
-      gradient.style.background.match(/to\w?[a-z\s]+/)?.toString() as string,
-      direction
-    );
+
+    // Converting regex match to an array of strings
+    let matchResult = gradient.style.background.match(
+      gradientDirectionRegex
+    ) as Array<string>;
+
+    // This check is needed because when a linear-gradient direction is set to `to bottom` the browser
+    // automatically removes it thus making it tedious to deal with
+
+    /** Checking if the linear-gradient direction is found */
+    if (matchResult[1]) {
+      // Removing the `,` from the regex match so it can be used in the replace function
+      matchResult[1] = matchResult[1].replace(',', '');
+
+      // Replacing the direction in the current background to the one that is passed into the function
+      gradient.style.background = gradient.style.background.replace(
+        matchResult[1],
+        direction
+      );
+    } else {
+      /**
+       * Replace the current gradient style with first match result `linear-gradient(` with `linear-gradient(to bottom,` where `to bottom`
+       * would be the direction passed in by the user.
+       */
+      let newGradient = gradient.style.background.replace(
+        matchResult[0],
+        matchResult[0].concat(direction.concat(', '))
+      );
+
+      // Setting the newly formed string as the gradient element background
+      gradient.style.background = newGradient;
+    }
   }
 
   /**
@@ -71,7 +105,7 @@ export class GradientCardComponent implements OnInit {
   }
 
   /**
-   * A helper method that copies the css gradient for the selected component by fetching the elements css background property
+   * A helper method that copies the CSS gradient for the selected component by fetching the elements CSS background property
    * @param clickedElement The element that has the gradient style on the background property
    */
   copyGradient(clickedElement: HTMLElement): void {
