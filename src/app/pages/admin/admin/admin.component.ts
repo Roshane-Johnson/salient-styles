@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
   constructor(private router: Router, private _auth: AuthService) {
     this._auth.loggedInUser().subscribe({
       next: (resp: ApiResponse) => {
-        if (resp.data.role == UserType.USER) {
+        if (resp.data.role == UserType.ADMIN) {
           this.isLoading = false;
           this.isAdmin = true;
         } else {
