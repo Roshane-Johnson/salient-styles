@@ -16,11 +16,11 @@
           <mat-form-field appearance="outline" color="primary">
             <mat-label>Direction</mat-label>
             <mat-select matNativeControl formControlName="direction">
-              <mat-option [value]="'to left'">
+              <mat-option [value]="'to right'">
                 <mat-icon>east</mat-icon>
                 Left to Right
               </mat-option>
-              <mat-option [value]="'to right'">
+              <mat-option [value]="'to left'">
                 <mat-icon>west</mat-icon>
                 Right to Left
               </mat-option>
@@ -45,7 +45,7 @@
                 From Top to Right Bottom
               </mat-option>
               <mat-option [value]="'to left bottom'">
-                <mat-icon>south_west</mat-icon>
+                <mat-icon fontIcon="south_west"></mat-icon>
                 From Top to Left Bottom
               </mat-option>
             </mat-select>

@@ -11,8 +11,10 @@
           </svg>
         </div>
         <div>
-          <p class="mb-2 text-sm font-medium text-gray-600">Total clients</p>
-          <p class="text-lg font-semibold text-gray-700">6389</p>
+          <p class="mb-2 text-sm font-medium text-gray-600">Total Users</p>
+          <p class="text-lg font-semibold text-gray-700 transition-all">
+            {{ totalUsers ?? "..." }}
+          </p>
         </div>
       </div>
     </div>
@@ -28,8 +30,10 @@
           </svg>
         </div>
         <div>
-          <p class="mb-2 text-sm font-medium text-gray-600">Account balance</p>
-          <p class="text-lg font-semibold text-gray-700">$ 46,760.89</p>
+          <p class="mb-2 text-sm font-medium text-gray-600">Total Gradients</p>
+          <p class="text-lg font-semibold text-gray-700">
+            {{ totalGradients ?? "..." }}
+          </p>
         </div>
       </div>
     </div>
@@ -44,7 +48,7 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600">New sales</p>
-          <p class="text-lg font-semibold text-gray-700">376</p>
+          <p class="text-lg font-semibold text-gray-700">Unavailable</p>
         </div>
       </div>
     </div>
@@ -60,8 +64,10 @@
           </svg>
         </div>
         <div>
-          <p class="mb-2 text-sm font-medium text-gray-600">Pending contacts</p>
-          <p class="text-lg font-semibold text-gray-700">35</p>
+          <p class="mb-2 text-sm font-medium text-gray-600">
+            Pending Gradients
+          </p>
+          <p class="text-lg font-semibold text-gray-700">Unavailable</p>
         </div>
       </div>
     </div>
