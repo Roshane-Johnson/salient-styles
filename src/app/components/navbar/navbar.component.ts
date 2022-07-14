@@ -4,32 +4,29 @@ import { ApiResponse } from 'src/app/types/ApiResponse';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+	selector: 'app-navbar',
+	templateUrl: './navbar.component.html',
+	styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private _auth: AuthService) {}
+	constructor(private authService: AuthService) {}
 
-  currentUser: any = '';
+	currentUser: any = '';
 
-  loggedIn: boolean = this._auth.loggedIn();
+	loggedIn: boolean = this.authService.loggedIn();
 
-  logoutUser() {
-    this._auth.logoutUser().subscribe((resp: ApiResponse) => {
-      console.assert(environment.production, resp);
-      if (resp.message.toLowerCase().includes('logged out')) {
-        localStorage.removeItem('token');
-        location.reload();
-      }
-    });
-  }
+	logoutUser() {
+		this.authService.logoutUser().subscribe((resp: ApiResponse) => {
+			if (resp.message.toLowerCase().includes('logged out')) {
+				localStorage.removeItem('token');
+				location.reload();
+			}
+		});
+	}
 
-  ngOnInit(): void {
-    if (this._auth.loggedIn()) {
-      this._auth
-        .loggedInUser()
-        .subscribe((resp: ApiResponse) => (this.currentUser = resp.data));
-    }
-  }
+	ngOnInit(): void {
+		if (this.authService.loggedIn()) {
+			this.authService.loggedInUser().subscribe((resp: ApiResponse) => (this.currentUser = resp.data));
+		}
+	}
 }

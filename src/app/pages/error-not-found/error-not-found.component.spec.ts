@@ -8,9 +8,8 @@ describe('ErrorNotFoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorNotFoundComponent ]
-    })
-    .compileComponents();
+      declarations: [ErrorNotFoundComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

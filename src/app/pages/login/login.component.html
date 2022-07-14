@@ -1,93 +1,63 @@
-<section
-  class="grid grid-cols-2 min-h-screen bg-gradient-to-tr from-[#12c2e9] via-[#c471ed] to-[#f64f59]"
->
-  <div
-    class="text-white flex justify-center items-center flex-col w-1/2 mx-auto text-center"
-  >
-    <h1
-      class="font-['Pacifico'] text-7xl mb-8 cursor-pointer select-none"
-      routerLink="/"
-    >
-      Salient
-    </h1>
-    <p routerLink="/" class="cursor-pointer select-none">
-      A handpicked collection of beautiful color gradients for designers and
-      developers.
-    </p>
-  </div>
-  <div
-    class="bg-white shadow-lg self-center p-10 border border-gray-200 rounded-md mx-auto w-1/2"
-  >
-    <p
-      *ngIf="loginSuccessfull == false"
-      class="p-4 mb-8 rounded-md bg-red-200 text-red-700 flex justify-between items-center"
-    >
-      <span>Invalid Credentials, Try again</span>
-      <mat-icon>cancel</mat-icon>
-    </p>
-    <p
-      *ngIf="loginSuccessfull"
-      class="p-4 mb-8 rounded-md bg-green-200 text-green-700 flex justify-between items-center"
-    >
-      <span>Logged in successfully...</span>
-      <mat-icon>check_circle</mat-icon>
-    </p>
-    <h1 class="font-bold text-lg mb-2 text-center">Sign in</h1>
-    <p class="mb-8 text-center">using your Gradient Lovers account</p>
-    <form
-      class="flex flex-col"
-      [formGroup]="loginForm"
-      (ngSubmit)="loginUser(loginForm)"
-    >
-      <div class="grid grid-cols-1 gap-x-8 gap-y-1">
-        <mat-form-field class="w-full mb-4">
-          <mat-label>Email</mat-label>
-          <input
-            type="email"
-            formControlName="email"
-            matInput
-            placeholder="Enter your email address"
-          />
-          <mat-error *ngIf="email?.hasError('required')">
-            <span>Please enter your email address.</span>
-          </mat-error>
-          <mat-error *ngIf="email?.hasError('pattern')">
-            Recheck your email address
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="w-full mb-8">
-          <mat-label>Password</mat-label>
-          <input
-            type="password"
-            formControlName="password"
-            matInput
-            placeholder="Enter your password address"
-            autocomplete="new-password"
-          />
-          <mat-error *ngIf="password?.hasError('required')">
-            <span>Please enter your password.</span>
-          </mat-error>
-        </mat-form-field>
-        <p class="mb-8 flex justify-between items-center text-xs">
-          <span class="flex items-baseline">
-            <mat-checkbox
-              color="primary"
-              class="mr-2"
-              [checked]="true"
-            ></mat-checkbox>
-            <span>Stay signed in</span>
-          </span>
-          <a href="#!" routerLink="/account/recover" class="text-blue-600">
-            Forgot Password?
-          </a>
-        </p>
-      </div>
-      <button mat-flat-button color="primary">Login</button>
-      <mat-divider style="margin-bottom: 1rem; margin-top: 1rem"></mat-divider>
-      <a href="/signup" mat-stroked-button color="primary">Create Account</a>
-      <!-- TODO: Add Google OAuth to login -->
-      <!-- <p class="my-4 text-sm text-center">Or, continue with</p>
-      <button mat-stroked-button color="primary">Google</button> -->
-    </form>
-  </div>
+<section class="grid grid-cols-2 min-h-screen bg-gradient-to-tr from-[#12c2e9] via-[#c471ed] to-[#f64f59]">
+	<div class="text-white flex justify-center items-center flex-col w-1/2 mx-auto text-center">
+		<h1 class="font-['Pacifico'] text-7xl mb-8 cursor-pointer select-none" routerLink="/">Salient</h1>
+		<p routerLink="/" class="cursor-pointer select-none">A handpicked collection of beautiful color gradients for designers and developers.</p>
+	</div>
+
+	<div class="bg-white shadow-lg self-center p-10 border border-gray-200 rounded-md mx-auto w-1/2">
+		<p *ngIf="loginSuccessfull == false" class="p-4 mb-8 rounded-md bg-red-200 text-red-700 flex justify-between items-center">
+			<span>Invalid Credentials, Try again</span>
+			<mat-icon>cancel</mat-icon>
+		</p>
+
+		<p *ngIf="loginSuccessfull" class="p-4 mb-8 rounded-md bg-green-200 text-green-700 flex justify-between items-center">
+			<span>Logged in successfully...</span>
+			<mat-icon>check_circle</mat-icon>
+		</p>
+
+		<h1 class="font-bold text-lg mb-2 text-center">Sign in</h1>
+
+		<p class="mb-8 text-center">using your Gradient Lovers account</p>
+
+		<form class="flex flex-col" [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm)">
+			<div class="grid grid-cols-1 gap-x-8 gap-y-1">
+				<mat-form-field class="w-full mb-4">
+					<mat-label>Email</mat-label>
+					<input type="email" formControlName="email" matInput placeholder="Enter your email address" />
+					<mat-error *ngIf="email?.hasError('required')">
+						<span>Please enter your email address.</span>
+					</mat-error>
+					<mat-error *ngIf="email?.hasError('pattern')"> Recheck your email address </mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="w-full mb-8">
+					<mat-label>Password</mat-label>
+					<input
+						type="password"
+						formControlName="password"
+						matInput
+						placeholder="Enter your password address"
+						autocomplete="new-password"
+					/>
+					<mat-error *ngIf="password?.hasError('required')">
+						<span>Please enter your password.</span>
+					</mat-error>
+				</mat-form-field>
+
+				<p class="mb-8 flex justify-between items-center text-xs">
+					<span class="flex items-baseline">
+						<mat-checkbox color="primary" class="mr-2" [checked]="true"></mat-checkbox>
+						<span>Stay signed in</span>
+					</span>
+					<a href="#!" routerLink="/account/recover" class="text-blue-600"> Forgot Password? </a>
+				</p>
+			</div>
+			<button mat-flat-button color="primary">Login</button>
+			<mat-divider style="margin-bottom: 1rem; margin-top: 1rem"></mat-divider>
+			<a href="/signup" mat-stroked-button color="primary">Create Account</a>
+			<!-- TODO: Add Google OAuth to login -->
+			<!-- <p class="my-4 text-sm text-center">Or, continue with</p> -->
+			<!-- <button mat-stroked-button color="primary">Google</button> -->
+		</form>
+	</div>
 </section>

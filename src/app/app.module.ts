@@ -22,41 +22,43 @@ import { ErrorNotFoundComponent } from './pages/error-not-found/error-not-found.
 import { TitlecasePipe } from './pipes/titlecase.pipe';
 import { AdminComponent } from './pages/admin//admin/admin.component';
 import { CreateGradientComponent } from './components/admin/create-gradient/create-gradient.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    LoginComponent,
-    HomeComponent,
-    SignupComponent,
-    ProfileComponent,
-    ProfileCardComponent,
-    GradientCardComponent,
-    ErrorNotFoundComponent,
-    TitlecasePipe,
-    AdminComponent,
-    CreateGradientComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    HttpClientModule,
-    ColorPickerModule,
-  ],
-  providers: [
-    AuthGuard,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: BearerTokenInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		NavbarComponent,
+		FooterComponent,
+		LoginComponent,
+		HomeComponent,
+		SignupComponent,
+		ProfileComponent,
+		ProfileCardComponent,
+		GradientCardComponent,
+		ErrorNotFoundComponent,
+		TitlecasePipe,
+		AdminComponent,
+		CreateGradientComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MaterialModule,
+		HttpClientModule,
+		ColorPickerModule,
+	],
+	providers: [
+		AuthGuard,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: BearerTokenInterceptor,
+			multi: true,
+		},
+		AuthService,
+	],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}
