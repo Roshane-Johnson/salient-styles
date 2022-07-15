@@ -1,10 +1,12 @@
+import 'zone.js/plugins/zone-error'; // Included with Angular CLI.
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000/api/v1',
+  apiUrl: 'https://salient-styles-api.herokuapp.com/api/v1',
+  // apiUrl: 'http://localhost:8000/api/v1',
   appName: 'Salient',
   currentYear: new Date().getFullYear(),
 };
@@ -16,4 +18,3 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

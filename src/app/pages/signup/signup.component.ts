@@ -6,94 +6,78 @@ import { SharedUtilsService } from 'src/app/services/shared-utils.service';
 import { RegisterResponse } from 'src/app/types/RegisterResponse';
 
 @Component({
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss'],
+	templateUrl: './signup.component.html',
+	styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  constructor(
-    private _auth: AuthService,
-    private router: Router,
-    private _util: SharedUtilsService
-  ) {}
+	constructor(private authService: AuthService, private router: Router) {}
 
-  passwordVisible: boolean = false;
+	passwordVisible: boolean = false;
 
-  fetchCompleted: boolean | null = null;
-  signupSuccessfull: boolean | null = null;
+	fetchCompleted: boolean | null = null;
+	signupSuccessfull: boolean | null = null;
 
-  signUpForm: FormGroup = new FormGroup({
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email,
-      Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
-    ]),
-    firstName: new FormControl('', []),
-    lastName: new FormControl('', []),
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-      Validators.maxLength(20),
-    ]),
-    confirmPassword: new FormControl('', [Validators.required]),
-  });
+	signUpForm: FormGroup = new FormGroup({
+		email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+		firstName: new FormControl('', []),
+		lastName: new FormControl('', []),
+		username: new FormControl('', [Validators.required]),
+		password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
+		confirmPassword: new FormControl('', [Validators.required]),
+	});
 
-  createUser(form: FormGroup): void {
-    if (form.invalid) return;
-    this.fetchCompleted = false;
+	createUser(form: FormGroup): void {
+		if (form.invalid) return;
 
-    let signupCredentials = new FormData();
-    signupCredentials.append('first_name', form.value.firstName);
-    signupCredentials.append('last_name', form.value.lastName);
-    signupCredentials.append('username', form.value.username);
-    signupCredentials.append('email', form.value.email);
-    signupCredentials.append('password', form.value.password);
-    signupCredentials.append(
-      'password_confirmation',
-      form.value.confirmPassword
-    );
-    this._auth
-      .registerUser(signupCredentials)
-      .subscribe((resp: RegisterResponse) => {
-        console.log(resp);
-        if ('bearer_token' in resp.data) {
-          this.fetchCompleted = true;
-          this.signupSuccessfull = true;
+		this.fetchCompleted = false;
 
-          localStorage.setItem('token', resp.data.bearer_token);
+		const signupCredentials = new FormData();
+		signupCredentials.append('first_name', form.value.firstName);
+		signupCredentials.append('last_name', form.value.lastName);
+		signupCredentials.append('username', form.value.username);
+		signupCredentials.append('email', form.value.email);
+		signupCredentials.append('password', form.value.password);
+		signupCredentials.append('password_confirmation', form.value.confirmPassword);
 
-          setTimeout(() => {
-            this.router.navigate(['/']);
-          }, 2 * 1000);
-        } else {
-          this.signupSuccessfull = false;
-        }
-      });
-  }
+		this.authService.registerUser(signupCredentials).subscribe((resp: RegisterResponse) => {
+			if ('bearer_token' in resp.data) {
+				this.fetchCompleted = true;
+				this.signupSuccessfull = true;
 
-  get firstName() {
-    return this.signUpForm.get('firstName');
-  }
+				localStorage.setItem('token', resp.data.bearer_token);
 
-  get lastName() {
-    return this.signUpForm.get('lastName');
-  }
+				setTimeout(() => {
+					this.router.navigate(['/']);
+				}, 2 * 1000);
+			} else {
+				this.signupSuccessfull = false;
+			}
+		});
+	}
 
-  get username() {
-    return this.signUpForm.get('username');
-  }
+	get firstName() {
+		return this.signUpForm.get('firstName');
+	}
 
-  get email() {
-    return this.signUpForm.get('email');
-  }
+	get lastName() {
+		return this.signUpForm.get('lastName');
+	}
 
-  get password() {
-    return this.signUpForm.get('password');
-  }
+	get username() {
+		return this.signUpForm.get('username');
+	}
 
-  get confirmPassword() {
-    return this.signUpForm.get('confirmPassword');
-  }
+	get email() {
+		return this.signUpForm.get('email');
+	}
 
-  ngOnInit(): void {}
+	get password() {
+		return this.signUpForm.get('password');
+	}
+
+	get confirmPassword() {
+		return this.signUpForm.get('confirmPassword');
+	}
+
+	ngOnInit(): void {}
 }

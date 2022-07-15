@@ -13,24 +13,26 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [],
-  exports: [
-    CommonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatMenuModule,
-    MatTabsModule,
-    MatSnackBarModule,
-    MatTooltipModule,
-    MatProgressSpinnerModule,
-    MatProgressBarModule,
-    MatSelectModule,
-  ],
+	declarations: [],
+	exports: [
+		CommonModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatButtonModule,
+		MatDividerModule,
+		MatCheckboxModule,
+		MatIconModule,
+		MatMenuModule,
+		MatTabsModule,
+		MatSnackBarModule,
+		MatTooltipModule,
+		MatProgressSpinnerModule,
+		MatProgressBarModule,
+		MatSelectModule,
+		MatPaginatorModule,
+	],
 })
 export class MaterialModule {}

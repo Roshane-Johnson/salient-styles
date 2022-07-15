@@ -7,40 +7,38 @@ import { Gradient } from 'src/app/types/Gradient';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(
-    private http: HttpClient,
-    private _auth: AuthService,
-    private _util: SharedUtilsService
-  ) {}
-  gradients: Gradient[] = [];
-  loggedInUserRole: string = '';
-  scrollToGradeints(cssSelector: string): void {
-    this._util.scrollToElement(cssSelector);
-  }
+	constructor(private http: HttpClient, private authService: AuthService, private utilService: SharedUtilsService) {}
 
-  ngOnInit(): void {
-    this.http.get<ApiResponse>(`${environment.apiUrl}/gradient/all`).subscribe({
-      next: (resp: ApiResponse) => {
-        this.gradients = resp.data;
-      },
-      error: (error: HttpErrorResponse) => {
-        this._util.devlog(error.error);
-      },
-    });
+	gradients: Gradient[] = [];
+	loggedInUserRole: string = '';
 
-    if (this._auth.loggedIn()) {
-      this._auth.loggedInUser().subscribe({
-        next: (resp: ApiResponse) => {
-          this.loggedInUserRole = resp.data.role;
-        },
-        error: (error) => {
-          this._util.devlog(error);
-        },
-      });
-    }
-  }
+	scrollToGradeints(cssSelector: string): void {
+		this.utilService.scrollToElement(cssSelector);
+	}
+
+	ngOnInit(): void {
+		this.http.get<ApiResponse>(`${environment.apiUrl}/gradient/all`).subscribe({
+			next: (resp: ApiResponse) => {
+				this.gradients = resp.data;
+			},
+			error: (error: HttpErrorResponse) => {
+				this.utilService.devlog(error.error);
+			},
+		});
+
+		if (this.authService.loggedIn()) {
+			this.authService.loggedInUser().subscribe({
+				next: (resp: ApiResponse) => {
+					this.loggedInUserRole = resp.data.role;
+				},
+				error: (error) => {
+					this.utilService.devlog(error);
+				},
+			});
+		}
+	}
 }
