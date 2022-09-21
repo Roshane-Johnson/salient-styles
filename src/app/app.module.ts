@@ -39,9 +39,6 @@ import { AdminModule } from './admin/admin.module';
 		GradientCardComponent,
 		ErrorNotFoundComponent,
 		TitlecasePipe,
-		AdminComponent,
-		CreateGradientComponent,
-		EditComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -51,7 +48,6 @@ import { AdminModule } from './admin/admin.module';
 		ReactiveFormsModule,
 		MaterialModule,
 		HttpClientModule,
-		ColorPickerModule,
 		AdminModule,
 	],
 	providers: [

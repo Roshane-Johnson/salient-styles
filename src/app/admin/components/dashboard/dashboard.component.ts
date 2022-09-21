@@ -19,30 +19,35 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
 	gradients: Gradient[] = [];
 
-	constructor(private http: HttpClient, private utilService: SharedUtilsService, public dialog: MatDialog) {
-		this.http.get<ApiResponse>(`${environment.apiUrl}/gradients/total`).subscribe({
-			next: (resp: ApiResponse) => {
-				this.totalGradients = resp.data;
-			},
-			error: (error: HttpErrorResponse) => {
-				this.utilService.devlog(error.error);
-			},
-		});
-
-		this.http.get<ApiResponse>(`${environment.apiUrl}/users/total`).subscribe({
-			next: (resp: ApiResponse) => {
-				this.totalUsers = resp.data;
-			},
-			error: (error: HttpErrorResponse) => {
-				this.utilService.devlog(error.error);
-			},
-		});
+	constructor(
+		private http: HttpClient,
+		private utilService: SharedUtilsService,
+		public dialog: MatDialog
+	) {
+		// this.http.get<ApiResponse>(`${environment.apiUrl}/gradients/total`).subscribe({
+		// 	next: (resp: ApiResponse) => {
+		// 		this.totalGradients = resp.data;
+		// 	},
+		// 	error: (error: HttpErrorResponse) => {
+		// 		this.utilService.devlog(error.error);
+		// 	},
+		// });
+		// this.http.get<ApiResponse>(`${environment.apiUrl}/users/total`).subscribe({
+		// 	next: (resp: ApiResponse) => {
+		// 		this.totalUsers = resp.data;
+		// 	},
+		// 	error: (error: HttpErrorResponse) => {
+		// 		this.utilService.devlog(error.error);
+		// 	},
+		// });
 	}
 
 	openDialog(gradientName: string) {
 		const index = this.gradients.findIndex((gradient: Gradient) => gradient.name == gradientName);
 
-		const dialogRef = this.dialog.open(GradientDeleteModal, { data: { gradient: this.gradients[index] } });
+		const dialogRef = this.dialog.open(GradientDeleteModal, {
+			data: { gradient: this.gradients[index] },
+		});
 
 		dialogRef.afterClosed().subscribe((result) => {
 			if (result == true) {
@@ -52,14 +57,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 	}
 
 	ngOnInit(): void {
-		this.http.get<ApiResponse>(`${environment.apiUrl}/gradient/all`).subscribe({
-			next: (resp: ApiResponse) => {
-				this.gradients = resp.data;
-			},
-			error: (error: HttpErrorResponse) => {
-				this.utilService.devlog(error.error);
-			},
-		});
+		// this.http.get<ApiResponse>(`${environment.apiUrl}/gradient/all`).subscribe({
+		// 	next: (resp: ApiResponse) => {
+		// 		this.gradients = resp.data;
+		// 	},
+		// 	error: (error: HttpErrorResponse) => {
+		// 		this.utilService.devlog(error.error);
+		// 	},
+		// });
 	}
 
 	ngAfterViewInit(): void {
@@ -76,12 +81,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 		<div mat-dialog-content>Would you like to delete {{ data.gradient.name }}?</div>
 		<div mat-dialog-actions>
 			<button mat-button mat-dialog-close>No</button>
-			<button mat-flat-button mat-dialog-close cdkFocusInitial color="warn" (click)="deleteOne()">Delete</button>
+			<button
+				mat-flat-button
+				mat-dialog-close
+				cdkFocusInitial
+				color="warn"
+				(click)="deleteOne()"
+			>
+				Delete
+			</button>
 		</div> `,
 	selector: '[gradient-delete-modal]',
 })
 export class GradientDeleteModal implements OnInit {
-	constructor(public dialogRef: MatDialogRef<GradientDeleteModal>, @Inject(MAT_DIALOG_DATA) public data: any) {}
+	constructor(
+		public dialogRef: MatDialogRef<GradientDeleteModal>,
+		@Inject(MAT_DIALOG_DATA) public data: any
+	) {}
 
 	deleteOne() {
 		this.dialogRef.close(true);

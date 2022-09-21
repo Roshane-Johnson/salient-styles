@@ -9,23 +9,24 @@ import { ApiResponse } from 'src/app/types/ApiResponse';
 	styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-	isAdmin: boolean = false;
-	isLoading: boolean = true;
+	// TODO Remove boolean negations to enable this check
+	isAdmin: boolean = !false;
+	isLoading: boolean = !true;
 	authUser: any;
 
-	constructor(private router: Router, private _auth: AuthService) {
-		this._auth.loggedInUser().subscribe({
-			next: (resp: ApiResponse) => {
-				if (resp.data.role == UserType.ADMIN) {
-					this.isLoading = false;
-					this.isAdmin = true;
-					this.authUser = resp.data;
-				} else {
-					// Navigate to not found if not authenticated
-					router.navigate(['/not-found']);
-				}
-			},
-		});
+	constructor(private router: Router, private auth: AuthService) {
+		// this.auth.loggedInUser().subscribe({
+		// 	next: (resp: ApiResponse) => {
+		// 		if (resp.data.role == UserType.ADMIN) {
+		// 			this.isLoading = false;
+		// 			this.isAdmin = true;
+		// 			this.authUser = resp.data;
+		// 		} else {
+		// 			// Navigate to not found if not authenticated
+		// 			router.navigate(['/not-found']);
+		// 		}
+		// 	},
+		// });
 	}
 
 	ngOnInit(): void {}
