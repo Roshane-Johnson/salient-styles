@@ -14,9 +14,29 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-	declarations: [],
+	imports: [
+		CommonModule,
+		MatInputModule,
+		MatFormFieldModule,
+		MatButtonModule,
+		MatDividerModule,
+		MatCheckboxModule,
+		MatIconModule,
+		MatMenuModule,
+		MatTabsModule,
+		MatSnackBarModule,
+		MatTooltipModule,
+		MatProgressSpinnerModule,
+		MatProgressBarModule,
+		MatSelectModule,
+		MatPaginatorModule,
+		MatBadgeModule,
+		MatDialogModule,
+	],
 	exports: [
 		CommonModule,
 		MatInputModule,
@@ -33,6 +53,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 		MatProgressBarModule,
 		MatSelectModule,
 		MatPaginatorModule,
+		MatBadgeModule,
+		MatDialogModule,
 	],
 })
 export class MaterialModule {}

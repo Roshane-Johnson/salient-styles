@@ -4,11 +4,11 @@ import 'zone.js/plugins/zone-error'; // Included with Angular CLI.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'https://salient-styles-api.herokuapp.com/api/v1',
-  // apiUrl: 'http://localhost:8000/api/v1',
-  appName: 'Salient',
-  currentYear: new Date().getFullYear(),
+	production: false,
+	apiUrl: 'https://salient-styles-api.herokuapp.com/api/v1',
+	//   apiUrl: 'http://localhost:8000/api/v1',
+	appName: 'Salient',
+	currentYear: new Date().getFullYear(),
 };
 
 /*

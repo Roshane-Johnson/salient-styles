@@ -5,26 +5,28 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ApiResponse } from 'src/app/types/ApiResponse';
 
 @Component({
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss'],
+	templateUrl: './admin.component.html',
+	styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  isAdmin: boolean = false;
-  isLoading: boolean = true;
+	isAdmin: boolean = false;
+	isLoading: boolean = true;
+	authUser: any;
 
-  constructor(private router: Router, private _auth: AuthService) {
-    this._auth.loggedInUser().subscribe({
-      next: (resp: ApiResponse) => {
-        if (resp.data.role == UserType.ADMIN) {
-          this.isLoading = false;
-          this.isAdmin = true;
-        } else {
-          // Navigate to not found if not authenticated
-          router.navigate(['/not-found']);
-        }
-      },
-    });
-  }
+	constructor(private router: Router, private _auth: AuthService) {
+		this._auth.loggedInUser().subscribe({
+			next: (resp: ApiResponse) => {
+				if (resp.data.role == UserType.ADMIN) {
+					this.isLoading = false;
+					this.isAdmin = true;
+					this.authUser = resp.data;
+				} else {
+					// Navigate to not found if not authenticated
+					router.navigate(['/not-found']);
+				}
+			},
+		});
+	}
 
-  ngOnInit(): void {}
+	ngOnInit(): void {}
 }

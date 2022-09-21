@@ -1,9 +1,13 @@
 ::ng-deep {
-  .mat-tab-body.mat-tab-body-active {
-    overflow-y: clip !important;
-  }
+	.mat-tab-body.mat-tab-body-active {
+		overflow-y: clip !important;
+	}
 
-  .mat-tab-body-content {
-    overflow: clip !important;
-  }
+	.mat-tab-body-content {
+		overflow: clip !important;
+	}
+}
+
+.mat-stroked-button {
+	margin-left: 2rem;
 }

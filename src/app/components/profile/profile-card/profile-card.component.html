@@ -18,9 +18,9 @@
 		</div>
 
 		<div *ngIf="currentUser" class="flex flex-col py-4">
-			<h2 class="text-[28px] mb-3 font-[400]">
+			<h2 class="text-[28px] mb-3 font-[400] flex items-center">
 				{{ currentUser?.username ?? 'username' | lowercase }}
-				<span *ngIf="currentUser?.role == 'admin'" class="w-[23px] inline-block text-blue-500 fill-blue-500">
+				<span *ngIf="currentUser?.role == 'admin'" class="w-[23px] inline-block text-blue-500 fill-blue-500 ml-2">
 					<svg viewBox="0 0 24 24" aria-label="Verified account">
 						<g>
 							<path
@@ -29,14 +29,15 @@
 						</g>
 					</svg>
 				</span>
+				<!-- <button mat-stroked-button routerLink="/profile/edit" matBadge="!" matBadgeColor="warn" matBadgeOverlap="true">Edit Profile</button> -->
 			</h2>
 			<ul class="flex flex-row mb-4">
 				<li class="mr-8">
 					<span class="font-bold">{{ this.gradientCount ?? this.gradientCount }}</span>
 					gradients
 				</li>
-				<li class="mr-8"><span class="font-bold">0</span> followers</li>
-				<li class=""><span class="font-bold">0</span> following</li>
+				<!-- <li class="mr-8"><span class="font-bold">0</span> followers</li> -->
+				<!-- <li class=""><span class="font-bold">0</span> following</li> -->
 			</ul>
 			<h2 *ngIf="currentUser.first_name && currentUser.last_name" class="font-[500] mb-2">
 				{{ currentUser.first_name + ' ' + currentUser.last_name | titlecase }}
@@ -47,8 +48,12 @@
 	<div class="mx-auto mt-4 w-[55%]">
 		<mat-tab-group>
 			<mat-tab label="Gradients">
-				<div class="grid grid-cols-2 gap-5 pt-5 overflow-y-visible">
-					<app-gradient-card *ngFor="let gradient of currentUser?.gradients" [gradient]="gradient"></app-gradient-card>
+				<div class="grid {{ currentUser!.gradients.length > 0 ? 'grid-cols-2' : '' }} gap-5 pt-5 overflow-y-visible">
+					<app-gradient-card *ngFor="let gradient of currentUser!.gradients" [gradient]="gradient"></app-gradient-card>
+					<div *ngIf="currentUser!.gradients.length <= 0" class="flex flex-col items-center mx-auto mt-10">
+						<img class="h-[170px] mb-6" src="/assets/images/no-gradient-found.svg" alt="Empty Web Result" />
+						<p class="small text-slate-600">No gradients here</p>
+					</div>
 				</div>
 			</mat-tab>
 			<mat-tab label="Favourites"></mat-tab>

@@ -23,6 +23,8 @@ import { TitlecasePipe } from './pipes/titlecase.pipe';
 import { AdminComponent } from './pages/admin//admin/admin.component';
 import { CreateGradientComponent } from './components/admin/create-gradient/create-gradient.component';
 import { AuthService } from './services/auth.service';
+import { EditComponent } from './components/profile/edit/edit.component';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
 	declarations: [
@@ -39,6 +41,7 @@ import { AuthService } from './services/auth.service';
 		TitlecasePipe,
 		AdminComponent,
 		CreateGradientComponent,
+		EditComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -49,6 +52,7 @@ import { AuthService } from './services/auth.service';
 		MaterialModule,
 		HttpClientModule,
 		ColorPickerModule,
+		AdminModule,
 	],
 	providers: [
 		AuthGuard,

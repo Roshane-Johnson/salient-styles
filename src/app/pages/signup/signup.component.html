@@ -7,17 +7,17 @@
 			<div class="grid grid-cols-2 gap-x-8 gap-y-1">
 				<mat-form-field class="w-full mb-2">
 					<mat-label>First Name</mat-label>
-					<input type="text" formControlName="firstName" matInput placeholder="Enter a first name" />
+					<input type="text" autocomplete="off" formControlName="firstName" matInput placeholder="Enter a first name" />
 				</mat-form-field>
 
 				<mat-form-field class="w-full mb-2">
 					<mat-label>Last Name</mat-label>
-					<input type="text" formControlName="lastName" matInput placeholder="Enter a last name" />
+					<input type="text" autocomplete="off" formControlName="lastName" matInput placeholder="Enter a last name" />
 				</mat-form-field>
 
 				<mat-form-field class="w-full mb-2">
 					<mat-label>Username</mat-label>
-					<input type="text" formControlName="username" matInput required />
+					<input type="text" autocomplete="off" formControlName="username" matInput required />
 					<mat-error *ngIf="username?.hasError('required')">
 						<span>Please enter a username.</span>
 					</mat-error>
@@ -26,7 +26,7 @@
 
 				<mat-form-field class="w-full mb-2">
 					<mat-label>Email</mat-label>
-					<input type="email" formControlName="email" matInput placeholder="Enter your email address" />
+					<input type="email" autocomplete="off" formControlName="email" matInput placeholder="Enter your email address" />
 					<mat-error *ngIf="email?.hasError('required')">
 						<span>Please enter an email address.</span>
 					</mat-error>
@@ -35,7 +35,14 @@
 
 				<mat-form-field class="w-full mb-14">
 					<mat-label>Password</mat-label>
-					<input type="password" formControlName="password" matInput placeholder="Enter your password" autocomplete="new-password" />
+					<input
+						type="password"
+						autocomplete="off"
+						formControlName="password"
+						matInput
+						placeholder="Enter your password"
+						autocomplete="new-password"
+					/>
 					<mat-error *ngIf="password?.hasError('required')">
 						<span>Please enter a password.</span>
 					</mat-error>
@@ -49,6 +56,7 @@
 					<mat-label>Confirm Password</mat-label>
 					<input
 						type="password"
+						autocomplete="off"
 						formControlName="confirmPassword"
 						matInput
 						placeholder="Confirm your password"
