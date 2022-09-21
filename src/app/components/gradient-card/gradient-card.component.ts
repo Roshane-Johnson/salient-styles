@@ -1,9 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewChildren } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChildren } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 import { Gradient } from 'src/app/types/Gradient';
 
 @Component({
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	selector: 'app-gradient-card',
 	templateUrl: './gradient-card.component.html',
 	styleUrls: ['./gradient-card.component.scss'],

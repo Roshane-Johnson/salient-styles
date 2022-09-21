@@ -1,7 +1,8 @@
 <nav class="bg-white border-b border-gray-200 py-4 fixed w-full z-10 top-0">
-	<div class="limiter flex justify-between w-11/12 mx-auto">
-		<a href="/" class="inline-flex w-full font-['Pacifico'] text-2xl text-blue-600"> Salient </a>
-		<div *ngIf="!loggedIn" class="inline-flex w-full justify-end flex-row">
+	<div class="limiter flex justify-between w-4/5 mx-auto">
+		<a href="/" class="inline-flex w-full font-['Pacifico'] text-2xl text-blue-600">Salient</a>
+		<!-- TODO Enable user management feature | Feature User Management -->
+		<!-- <div *ngIf="!loggedIn" class="inline-flex w-full justify-end flex-row">
 			<button mat-stroked-button matButton routerLink="/login" style="margin-right: 0.75rem">Login</button>
 			<button mat-flat-button matButton routerLink="/signup" color="primary">Create Account</button>
 		</div>
@@ -19,9 +20,9 @@
 			<mat-menu class="mt-3 min-w-[200px_!important] max-w-[0px_!important]" #beforeMenu="matMenu" xPosition="before">
 				<div mat-menu-item style="display: flex !important" class="justify-between items-center" routerLink="/profile">
 					<div>Profile</div>
-					<mat-icon style="display: flex !important" class="text-[20px] justify-end justify-self-end items-center"> person </mat-icon>
+					<mat-icon style="display: flex !important" class="text-[20px] justify-end justify-self-end items-center">person</mat-icon>
 				</div>
-				<!-- <button
+				<button
 					[disabled]="true"
 					mat-menu-item
 					style="display: flex !important"
@@ -32,13 +33,13 @@
 					<mat-icon style="display: flex !important" class="text-[20px] justify-end justify-self-end items-center">
 						manage_accounts
 					</mat-icon>
-				</button> -->
+				</button>
 				<mat-divider></mat-divider>
 				<div mat-menu-item style="display: flex !important" class="justify-between items-center" (click)="logoutUser()">
 					<div>Logout</div>
 					<mat-icon style="display: flex !important" class="text-[20px] justify-end justify-self-end items-center"> logout </mat-icon>
 				</div>
 			</mat-menu>
-		</div>
+		</div> -->
 	</div>
 </nav>

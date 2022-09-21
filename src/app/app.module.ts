@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './pages/login/login.component';
-import { MaterialModule } from './modules/material/material.module';
+import { MaterialModule } from './modules/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { AuthGuard } from './guards/auth.guard';
@@ -20,11 +20,11 @@ import { ProfileCardComponent } from './components/profile/profile-card/profile-
 import { GradientCardComponent } from './components/gradient-card/gradient-card.component';
 import { ErrorNotFoundComponent } from './pages/error-not-found/error-not-found.component';
 import { TitlecasePipe } from './pipes/titlecase.pipe';
-import { AdminComponent } from './pages/admin//admin/admin.component';
-import { CreateGradientComponent } from './components/admin/create-gradient/create-gradient.component';
+import { AdminComponent } from './admin/admin.component';
+import { CreateGradientComponent } from './admin/components/create-gradient/create-gradient.component';
 import { AuthService } from './services/auth.service';
 import { EditComponent } from './components/profile/edit/edit.component';
-import { AdminModule } from './modules/admin/admin.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
 	declarations: [

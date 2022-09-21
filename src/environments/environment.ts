@@ -5,8 +5,7 @@ import 'zone.js/plugins/zone-error'; // Included with Angular CLI.
 
 export const environment = {
 	production: false,
-	apiUrl: 'https://salient-styles-api.herokuapp.com/api/v1',
-	//   apiUrl: 'http://localhost:8000/api/v1',
+	apiUrl: 'http://localhost:8000/api/v1',
 	appName: 'Salient',
 	currentYear: new Date().getFullYear(),
 };

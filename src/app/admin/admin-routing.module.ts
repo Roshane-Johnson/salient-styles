@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateGradientComponent } from 'src/app/components/admin/create-gradient/create-gradient.component';
-import { DashboardComponent } from 'src/app/components/admin/dashboard/dashboard.component';
-import { EditGradientComponent } from 'src/app/components/admin/edit-gradient/edit-gradient.component';
-import { AdminComponent } from 'src/app/pages/admin/admin/admin.component';
+import { CreateGradientComponent } from './components/create-gradient/create-gradient.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { EditGradientComponent } from './components/edit-gradient/edit-gradient.component';
+import { AdminComponent } from './admin.component';
 
 const routes: Routes = [
 	{
