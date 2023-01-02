@@ -1,27 +1,35 @@
-# GradientLovers
+# 🎨 Salient Styles
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+## ✒️ Description
 
-### Development server
+Salient is a website that displays beautiful gradients for inspiration and use in design projects. Our motivation for building this project was to provide a simple and visually appealing resource for designers and creatives.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The problem that Salient solves is providing a curated collection of gradients in a user-friendly interface. With Salient, users can easily browse and select gradients for use in their designs.
 
-## Code scaffolding
+## 📃 Table of Contents
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Usage](#usage)
+- [Credits](#credits)
 
-## Build
+## ⚒️ Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To use Salient, follow these steps:
 
-## Running unit tests
+1. Visit the website at [salient-styles.web.app](https://salient-styles.web.app)
+2. Browse the available gradients by scrolling or using the search bar.
+3. Select a gradient by clicking on it.
+4. Copy the gradient's hex code by clicking the "Copy" button.
+5. Use the gradient in your design by pasting the hex code.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 👨‍💻 Credits
 
-## Running end-to-end tests
+Salient was created by [Roshane Johnson](https://github.com/Roshane-Johnson).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+We used the following resources in the development of this project:
 
-## Further help
+- [Angular](https://v13.angular.io/) for the website template
+- [ExpressJS](https://google.com?q=express+js/) for creating the graphics
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<!-- ## License
+
+Salient is licensed under the MIT License. This means that you are free to use, modify, and distribute the website as long as you include the original copyright and license notice. -->
